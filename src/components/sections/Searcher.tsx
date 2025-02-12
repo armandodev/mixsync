@@ -34,11 +34,11 @@ export default function Searcher() {
     <section className="grid gap-4 w-full">
       <h2 className="text-3xl">Busca tus canciones favoritas</h2>
       <form
-        className="flex items-center justify-center gap-2"
+        className="grid grid-cols-2 sm:flex items-center justify-center gap-2"
         onSubmit={handleSubmit}
       >
         <input
-          className="w-full rounded-lg border-2 border-gray-300 p-2"
+          className="w-full col-span-2 rounded-lg border-2 border-gray-300 p-2"
           type="text"
           placeholder="Título, artista, etc."
           onChange={handleChange}

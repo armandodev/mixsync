@@ -2,8 +2,8 @@ import { GithubIcon } from "../icons";
 
 export default function Footer() {
   return (
-    <footer className="max-w-screen-lg h-14 p-4 mx-auto">
-      <ul className="w-full flex items-center justify-between gap-4">
+    <footer className="max-w-screen-lg h-20 p-4 mx-auto">
+      <ul className="w-full h-full flex items-center justify-between gap-4">
         <li>
           Una iniciativa de{" "}
           <a
