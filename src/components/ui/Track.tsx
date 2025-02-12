@@ -6,12 +6,14 @@ const COPY_FEEDBACK_DURATION = 3000;
 const FADE_DURATION = 200;
 
 export default function Track({ track }: { track: Result }) {
+  const [modalMessage, setModalMessage] = useState("");
   const [copied, setCopied] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(track.url);
+      setModalMessage("URL copiada");
       setShowModal(true);
       setCopied(true);
       setTimeout(() => {
@@ -23,6 +25,23 @@ export default function Track({ track }: { track: Result }) {
     }
   };
 
+  const handleCopyFileName = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        `${track.artist} - ${track.title}.mp3`
+      );
+      setModalMessage("Nombre de archivo copiado");
+      setShowModal(true);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+        setTimeout(() => setShowModal(false), FADE_DURATION);
+      }, COPY_FEEDBACK_DURATION);
+    } catch (error) {
+      console.error("Error al copiar el nombre de archivo:", error);
+    }
+  };
+
   return (
     <li className="w-full rounded-lg border-2 border-gray-300 p-2 flex items-center justify-between gap-4 relative">
       {showModal && (
@@ -30,9 +49,10 @@ export default function Track({ track }: { track: Result }) {
           className={`fixed bottom-0 left-0 z-10 w-full p-4 box-border ${
             copied ? "animate-fade-in" : "animate-fade-out"
           }`}
+          role="alert"
         >
           <p className="w-full text-center p-4 border border-gray-500 bg-gray-200 text-gray-500 rounded-lg">
-            URL copiada al portapapeles
+            {modalMessage}
           </p>
         </div>
       )}
@@ -55,6 +75,15 @@ export default function Track({ track }: { track: Result }) {
             title="Copiar URL"
           >
             <CopyIcon />
+          </button>
+        </li>
+        <li>
+          <button
+            className="cursor-pointer"
+            onClick={handleCopyFileName}
+            title="Copiar nombre de archivo"
+          >
+            .mp3
           </button>
         </li>
         <li>
