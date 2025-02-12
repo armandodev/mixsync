@@ -46,7 +46,7 @@ export default function Track({ track }: { track: Result }) {
     <li className="w-full rounded-lg border-2 border-gray-300 p-2 flex items-center justify-between gap-4 relative">
       {showModal && (
         <div
-          className={`fixed bottom-0 left-0 z-10 w-full p-4 box-border ${
+          className={`copy-alert fixed bottom-0 left-1/2 transform -translate-x-1/2 z-10 w-full max-w- p-4 box-border ${
             copied ? "animate-fade-in" : "animate-fade-out"
           }`}
           role="alert"

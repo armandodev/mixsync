@@ -17,6 +17,11 @@ main {
   padding: 1rem;
 }
 
+.copy-alert {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

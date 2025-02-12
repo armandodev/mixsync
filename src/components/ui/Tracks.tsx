@@ -11,7 +11,10 @@ export default function Tracks({
   return (
     <ul className="flex flex-wrap gap-4">
       {error && (
-        <li className="w-full border border-red-500 bg-red-200 text-red-500 p-2 rounded-lg">
+        <li
+          key={error}
+          className="w-full border border-red-500 bg-red-200 text-red-500 p-2 rounded-lg"
+        >
           {error}
         </li>
       )}
