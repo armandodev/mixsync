@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+html {
+  font-family: "Onest Variable", sans-serif;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+main {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  max-width: 64rem;
+  min-height: calc(100vh - 80px - 56px);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-in forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut 200ms ease-out forwards;
+}
