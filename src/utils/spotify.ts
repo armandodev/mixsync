@@ -76,7 +76,7 @@ export async function getSpotifySearchResults(q: string): Promise<Result[]> {
 
   return data.tracks.items.map((track) => ({
     id: track.id,
-    image: track.album.images[1].url,
+    image: track.album.images[1]?.url || "/default.png",
     url: track.external_urls.spotify,
     title: track.name,
     artist: track.artists.map((artist) => artist.name).join(", "),
