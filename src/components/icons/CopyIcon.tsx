@@ -6,8 +6,8 @@ export default function CopyIcon({
   height?: number;
 }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" width={width} height={height}>
-      <g fill="#0F0F0F">
+    <svg viewBox="0 0 24 24" className="text-black dark:text-white" width={width} height={height}>
+      <g fill="currentColor">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
