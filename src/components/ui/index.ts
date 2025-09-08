@@ -1,5 +1,5 @@
-export { default as Footer } from "@/components/ui/footer";
-export { default as Navigation } from "@/components/ui/navigation";
-export { default as Searcher } from "@/components/ui/searcher";
-export { default as Track } from "@/components/ui/track";
-export { default as TrackList } from "@/components/ui/track-list";
+export { default as Footer } from "./footer";
+export { default as Navigation } from "./navigation";
+export { default as Searcher } from "./searcher";
+export { default as Track } from "./track";
+export { default as TrackList } from "./track-list";
