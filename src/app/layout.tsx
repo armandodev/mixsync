@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 import { baseMetadata, LOGO_URL } from "@/utils/metadata";
 import "./globals.css";
-import Header from "@/components/ui/Header";
-import Footer from "@/components/ui/Footer";
+import Header from "@/components/ui/navigation";
+import Footer from "@/components/ui/footer";
 
 const onest = Onest({
   variable: "--font-onest",
