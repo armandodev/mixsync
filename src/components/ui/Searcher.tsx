@@ -3,6 +3,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Tracks } from "@/components/ui";
 import type { Result } from "@/types/result";
+import { getTracks } from "@/utils/spotify";
 
 export default function Searcher() {
   const [query, setQuery] = useState("");
@@ -12,17 +13,10 @@ export default function Searcher() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        `/api/spotify/search?q=${encodeURIComponent(query)}`
-      );
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Ha ocurrido un error");
-      }
-      const data = await res.json();
-      setResults(data.results);
+      const results = await getTracks(query);
+      setResults(results);
       setError(null);
-      console.log(data.results);
+      console.log(results);
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "Ha ocurrido un error desconocido";
