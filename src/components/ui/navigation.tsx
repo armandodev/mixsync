@@ -37,7 +37,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav>
+    <nav className="px-4">
       <div
         className="relative flex items-center justify-between max-w-screen-lg p-4 mx-auto rounded-none h-20 text-lg"
         role="navigation"
