@@ -13,7 +13,7 @@ export default function Searcher() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const results = await (await getTracks(query)).slice(0, 12);
+      const results = (await getTracks(query)).slice(0, 12);
       setResults(results);
       setError(null);
     } catch (err: unknown) {

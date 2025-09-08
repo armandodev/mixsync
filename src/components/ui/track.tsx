@@ -37,8 +37,10 @@ export default function Track({
       >
         <Image
           className="w-full aspect-square object-center object-cover rounded-lg mb-2 shadow-md"
-          src={track.image}
-          alt={track.title}
+          width={150}
+          height={150}
+          src={track.image || "/default.png"}
+          alt={track.title || "Imagen de la canción"}
           loading="lazy"
         />
         <div role="text">

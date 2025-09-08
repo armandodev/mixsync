@@ -51,9 +51,11 @@ export default async function TrackPage({ params }: ParamsArg) {
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col items-center">
         <Image
-          src={track.image}
-          alt={track.title}
           className="w-48 h-48 rounded-lg shadow-lg mb-4"
+          width={150}
+          height={150}
+          src={track.image || "/default.png"}
+          alt={track.title || "Imagen de la canción"}
         />
         <h1 className="text-2xl font-bold mb-2">{track.title}</h1>
         <p className="text-lg text-gray-600 mb-4">{track.artist}</p>

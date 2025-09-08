@@ -63,7 +63,7 @@ export default function Navigation() {
           {isAuthenticated && (
             <li className="relative">
               <button
-                className="flex items-center justify-center w-10 h-10 p-2 aspect-square rounded-full border-2 border-gray-300 hover:bg-gray-100 transition-colors duration-200"
+                className="flex items-center justify-center w-10 h-10 p-2 aspect-square rounded-full border-2 border-gray-300 hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
                 onClick={toggleUserMenu}
                 aria-label="Menú de usuario"
               >
