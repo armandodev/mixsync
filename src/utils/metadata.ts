@@ -5,11 +5,11 @@ export const SITE_NAME = "MixSync";
 export const DEFAULT_TITLE = "MixSync - Busca y descarga música fácilmente";
 export const DEFAULT_DESCRIPTION =
   "Busca tus canciones favoritas en Spotify y YouTube y obtén nombres de archivo sugerido y URLs para descargarlas en una plataforma.";
-export const OG_IMAGE_WEBP = "/og-image.webp";
-export const OG_IMAGE_PNG = "/og-image.png";
+export const OG_IMAGE_WEBP = "/og-banner.webp";
+export const OG_IMAGE_PNG = "/og-banner.png";
 export const OG_IMAGE_SIZES = [
-  { url: OG_IMAGE_WEBP, width: 1200, height: 630 },
-  { url: OG_IMAGE_PNG, width: 1200, height: 630 },
+  { url: OG_IMAGE_PNG, width: 1200, height: 630, alt: DEFAULT_TITLE },
+  { url: OG_IMAGE_WEBP, width: 1200, height: 630, alt: DEFAULT_TITLE },
 ];
 
 export const baseMetadata: Metadata = {
@@ -46,7 +46,7 @@ export const baseMetadata: Metadata = {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     creator: "@armandx06",
-    images: OG_IMAGE_SIZES,
+    images: [OG_IMAGE_PNG],
   },
   robots: {
     index: true,
