@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://mixsync.vercel.app";
-export const SITE_NAME = "MixSync";
-export const DEFAULT_TITLE = "MixSync - Busca y descarga música fácilmente";
-export const DEFAULT_DESCRIPTION =
+const SITE_URL = "https://mixsync.vercel.app";
+const SITE_NAME = "MixSync";
+const DEFAULT_TITLE = "MixSync - Busca y descarga música fácilmente";
+const DEFAULT_DESCRIPTION =
   "Busca tus canciones favoritas en Spotify y YouTube y obtén nombres de archivo sugerido y URLs para descargarlas en una plataforma.";
-export const OG_IMAGE_WEBP = "/og-banner.webp";
-export const OG_IMAGE_PNG = "/og-banner.png";
-export const OG_IMAGE_SIZES = [
+const OG_IMAGE_WEBP = "/og-banner.webp";
+const OG_IMAGE_PNG = "/og-banner.png";
+const OG_IMAGE_SIZES = [
   { url: OG_IMAGE_PNG, width: 1200, height: 630, alt: DEFAULT_TITLE },
   { url: OG_IMAGE_WEBP, width: 1200, height: 630, alt: DEFAULT_TITLE },
 ];
+export const LOGO_URL = "/logo.svg";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -60,6 +61,9 @@ export const baseMetadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/logo.svg" }],
+    icon: [{ url: LOGO_URL, type: "image/svg+xml" }],
+    apple: [{ url: LOGO_URL, type: "image/svg+xml" }],
+    shortcut: [{ url: LOGO_URL, type: "image/svg+xml" }],
+    other: [{ url: LOGO_URL, type: "image/svg+xml", sizes: "any" }],
   },
 };

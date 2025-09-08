@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
-import { baseMetadata } from "@/utils/metadata";
+import { baseMetadata, LOGO_URL } from "@/utils/metadata";
 import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <meta property="og:logo" content={LOGO_URL} />
+      </head>
       <body className={`${onest.variable} antialiased`}>
         <Header />
         <main>{children}</main>
