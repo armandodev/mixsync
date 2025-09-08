@@ -1,5 +1,5 @@
-export { default as Footer } from "./footer";
+export { default as Footer } from "./f";
 export { default as Navigation } from "./navigation";
-export { default as Searcher } from "./searcher";
-export { default as Track } from "./track";
+export { default as Searcher } from "./s";
+export { default as Track } from "./t";
 export { default as TrackList } from "./track-list";
