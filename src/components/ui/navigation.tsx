@@ -13,7 +13,6 @@ const USER_MENU_LINKS = [
 ];
 
 export default function Navigation() {
-  const [openMenu, setOpenMenu] = useState(false);
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const pathname = usePathname();
   // TODO: Implementar autenticación real
@@ -23,16 +22,10 @@ export default function Navigation() {
     link.active = link.href === pathname;
   });
 
-  const toggleMenu = () => {
-    setOpenMenu(!openMenu);
-    setOpenUserMenu(false);
-  };
   const toggleUserMenu = () => {
     setOpenUserMenu(!openUserMenu);
-    setOpenMenu(false);
   };
   const handleRouteChange = () => {
-    setOpenMenu(false);
     setOpenUserMenu(false);
   };
 
@@ -42,7 +35,7 @@ export default function Navigation() {
         className="relative flex items-center justify-between max-w-screen-lg p-4 mx-auto rounded-none h-20 text-lg"
         role="navigation"
       >
-        <a
+        <Link
           className={`text-3xl font-bold flex items-center gap-2 ${
             pathname === "/" ? "cursor-default" : "cursor-pointer"
           } transition-opacity duration-200`}
@@ -52,7 +45,7 @@ export default function Navigation() {
         >
           <Logo />
           <h1 className="sr-only sm:not-sr-only">MixSync</h1>
-        </a>
+        </Link>
 
         <ul className="flex items-center justify-end gap-4">
           {!isAuthenticated && (

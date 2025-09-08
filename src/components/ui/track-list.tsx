@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Result } from "@/types/result";
 import { Track } from "@/components/ui";
 import { X } from "lucide-react";

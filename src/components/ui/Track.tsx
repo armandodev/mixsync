@@ -3,6 +3,8 @@
 import type { Result } from "@/types/result";
 import { SpotifyIcon } from "@/components/icons";
 import { Copy, Download, File } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface TrackProps {
   track: Result;
@@ -29,11 +31,11 @@ export default function Track({
 
   return (
     <li className="grid gap-4 justify-between p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-200 w-full">
-      <a
+      <Link
         className="grid gap-2 hover:scale-105 transition-transform duration-200"
         href={`/track/${track.id}`}
       >
-        <img
+        <Image
           className="w-full aspect-square object-center object-cover rounded-lg mb-2 shadow-md"
           src={track.image}
           alt={track.title}
@@ -47,7 +49,7 @@ export default function Track({
             {track.artist}
           </p>
         </div>
-      </a>
+      </Link>
       <ul className="flex flex-wrap items-end justify-evenly gap-2">
         {UTILS.map((util) => (
           <li key={util.name}>
@@ -61,7 +63,7 @@ export default function Track({
           </li>
         ))}
         <li>
-          <a
+          <Link
             className="flex items-center bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition-all duration-200 hover:scale-105"
             href={track.url}
             target="_blank"
@@ -69,7 +71,7 @@ export default function Track({
             aria-label="Escuchar en Spotify"
           >
             <SpotifyIcon />
-          </a>
+          </Link>
         </li>
       </ul>
     </li>

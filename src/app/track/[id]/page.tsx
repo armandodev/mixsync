@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTrackById } from "@/utils/spotify";
 import { Result } from "@/types/result";
+import Image from "next/image";
+import Link from "next/link";
 
 type TrackRouteParams = { id: string };
 type MaybePromise<T> = T | Promise<T>;
@@ -48,19 +50,19 @@ export default async function TrackPage({ params }: ParamsArg) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col items-center">
-        <img
+        <Image
           src={track.image}
           alt={track.title}
           className="w-48 h-48 rounded-lg shadow-lg mb-4"
         />
         <h1 className="text-2xl font-bold mb-2">{track.title}</h1>
         <p className="text-lg text-gray-600 mb-4">{track.artist}</p>
-        <a
+        <Link
           href={track.url}
           className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600"
         >
           Escuchar
-        </a>
+        </Link>
       </div>
     </div>
   );

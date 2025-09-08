@@ -1,4 +1,5 @@
 import { GithubIcon } from "@/components/icons";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -6,17 +7,17 @@ export default function Footer() {
       <ul className="max-w-screen-lg h-20 p-4 mx-auto flex items-center justify-between gap-4">
         <li>
           Una iniciativa de{" "}
-          <a
+          <Link
             className="text-blue-500 hover:underline"
             href="https://armandodev-portfolio.vercel.app"
             target="_blank"
             rel="noreferrer"
           >
             @armandodev
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity duration-200"
             href="https://github.com/armandodev/mixsync"
             target="_blank"
@@ -24,7 +25,7 @@ export default function Footer() {
           >
             <GithubIcon />
             Repo
-          </a>
+          </Link>
         </li>
       </ul>
     </footer>
