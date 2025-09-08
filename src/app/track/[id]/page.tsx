@@ -1,18 +1,20 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getTrackById } from "@/utils/spotify";
 import { Result } from "@/types/result";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
+type TrackRouteParams = { id: string };
+type MaybePromise<T> = T | Promise<T>;
+interface ParamsArg {
+  params: MaybePromise<TrackRouteParams>;
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const track: Result = await getTrackById(params.id);
-  if (!track) {
-    notFound();
-  }
+export async function generateMetadata({
+  params,
+}: ParamsArg): Promise<Metadata> {
+  const { id } = await params;
+  const track: Result = await getTrackById(id);
+  if (!track) notFound();
 
   const title = `${track.title} - ${track.artist}`;
   const description = `Descarga ${track.title} de ${track.artist} fácilmente.`;
@@ -27,8 +29,6 @@ export async function generateMetadata({ params }: PageProps) {
       images: [
         {
           url: track.image,
-          width: 1200,
-          height: 630,
           alt: title,
         },
       ],
@@ -36,10 +36,11 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default async function Track({ params }: PageProps) {
+export default async function TrackPage({ params }: ParamsArg) {
+  const { id } = await params;
   let track: Result;
   try {
-    track = await getTrackById(params.id);
+    track = await getTrackById(id);
   } catch (error) {
     console.error("Error fetching track:", error);
     notFound();

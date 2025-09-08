@@ -19,7 +19,6 @@ main {
   max-width: 64rem;
   min-height: calc(100vh - 160px);
   margin: 0 auto;
-  padding: 1rem;
 }
 
 .copy-alert {

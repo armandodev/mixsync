@@ -2,13 +2,13 @@ import { GithubIcon } from "@/components/icons";
 
 export default function Footer() {
   return (
-    <footer className="max-w-screen-lg h-20 p-4 mx-auto">
-      <ul className="w-full h-full flex items-center justify-between gap-4">
+    <footer className="px-4">
+      <ul className="max-w-screen-lg h-20 p-4 mx-auto flex items-center justify-between gap-4">
         <li>
           Una iniciativa de{" "}
           <a
             className="text-blue-500 hover:underline"
-            href="https://github.com/armandodev"
+            href="https://armandodev-portfolio.vercel.app"
             target="_blank"
             rel="noreferrer"
           >

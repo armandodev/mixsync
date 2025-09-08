@@ -13,10 +13,9 @@ export default function Searcher() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const results = await getTracks(query);
+      const results = await (await getTracks(query)).slice(0, 12);
       setResults(results);
       setError(null);
-      console.log(results);
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "Ha ocurrido un error desconocido";
@@ -29,7 +28,7 @@ export default function Searcher() {
   };
 
   return (
-    <section className="grid gap-4 w-full">
+    <section className="grid gap-4 w-full p-4 mx-4">
       <h2 className="text-3xl">Busca tus canciones favoritas</h2>
       <form
         className="grid grid-cols-2 sm:flex items-center justify-center gap-2"

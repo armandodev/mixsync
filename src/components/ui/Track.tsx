@@ -1,102 +1,79 @@
-import { useState } from "react";
+"use client";
+
 import type { Result } from "@/types/result";
-import { SpotifyIcon, CopyIcon } from "@/components/icons";
+import { SpotifyIcon } from "@/components/icons";
+import { Copy, Download, File } from "lucide-react";
 
-const COPY_FEEDBACK_DURATION = 3000;
-const FADE_DURATION = 200;
+interface TrackProps {
+  track: Result;
+  copyUrl: () => void;
+  copyFileName: () => void;
+  download: () => void;
+}
 
-export default function Track({ track }: { track: Result }) {
-  const [modalMessage, setModalMessage] = useState("");
-  const [copied, setCopied] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(track.url);
-      setModalMessage("URL copiada");
-      setShowModal(true);
-      setCopied(true);
-      setTimeout(() => {
-        setCopied(false);
-        setTimeout(() => setShowModal(false), FADE_DURATION);
-      }, COPY_FEEDBACK_DURATION);
-    } catch (error) {
-      console.error("Error al copiar la URL:", error);
-    }
-  };
-
-  const handleCopyFileName = async () => {
-    try {
-      await navigator.clipboard.writeText(
-        `${track.artist} - ${track.title}.mp3`
-      );
-      setModalMessage("Nombre de archivo copiado");
-      setShowModal(true);
-      setCopied(true);
-      setTimeout(() => {
-        setCopied(false);
-        setTimeout(() => setShowModal(false), FADE_DURATION);
-      }, COPY_FEEDBACK_DURATION);
-    } catch (error) {
-      console.error("Error al copiar el nombre de archivo:", error);
-    }
-  };
+export default function Track({
+  track,
+  copyUrl,
+  copyFileName,
+  download,
+}: TrackProps) {
+  const UTILS = [
+    { name: "Copiar URL", icon: Copy, action: copyUrl },
+    {
+      name: "Copiar nombre de archivo",
+      icon: File,
+      action: copyFileName,
+    },
+    { name: "Descargar", icon: Download, action: download },
+  ];
 
   return (
-    <li className="w-full rounded-lg border-2 border-gray-300 p-2 flex items-center justify-between gap-4 relative">
-      {showModal && (
-        <div
-          className={`copy-alert fixed bottom-0 left-1/2 transform -translate-x-1/2 z-10 w-full max-w- p-4 box-border ${
-            copied ? "animate-fade-in" : "animate-fade-out"
-          }`}
-          role="alert"
-        >
-          <p className="w-full text-center p-4 border border-gray-500 bg-gray-200 text-gray-500 rounded-lg">
-            {modalMessage}
-          </p>
-        </div>
-      )}
-      <header className="flex items-center gap-2">
-        <img
-          className="w-20 aspect-square rounded-lg"
-          src={track.image}
-          alt={track.title}
-        />
-        <div>
-          <h3 className="text-xl">{track.title}</h3>
-          <p className="text-gray-500">{track.artist}</p>
-        </div>
-      </header>
-      <ul className="flex justify-end gap-2">
-        <li>
-          <button
-            className="cursor-pointer"
-            onClick={handleCopy}
-            title="Copiar URL"
-          >
-            <CopyIcon />
-          </button>
-        </li>
-        <li>
-          <button
-            className="cursor-pointer"
-            onClick={handleCopyFileName}
-            title="Copiar nombre de archivo"
-          >
-            .mp3
-          </button>
-        </li>
-        <li>
+    <li className="flex">
+      <a
+        href={`/track/${track.id}`}
+        className="grid gap-4 justify-between p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-200 w-full"
+      >
+        <header className="grid gap-2">
+          <img
+            className="w-full aspect-square object-center object-cover rounded-lg mb-2 shadow-md"
+            src={track.image}
+            alt={track.title}
+            loading="lazy"
+          />
+          <div role="text">
+            <h3 className="text-sm sm:text-normal md:text-lg font-semibold">
+              {track.title}
+            </h3>
+            <p className="text-sm sm:text-normal md:text-lg text-gray-500">
+              {track.artist}
+            </p>
+          </div>
+        </header>
+        <ul className="flex flex-wrap items-end justify-evenly gap-2">
+          {UTILS.map((util) => (
+            <li key={util.name}>
+              <button
+                className="flex items-center gap-2 bg-gray-200 p-2 rounded-lg hover:bg-gray-300 transition-all duration-200 cursor-pointer hover:scale-105"
+                onClick={util.action}
+                aria-label={util.name}
+              >
+                <util.icon className="w-5 h-5" />
+              </button>
+            </li>
+          ))}
+          <li>
             <a
+              className="flex items-center bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition-all duration-200 hover:scale-105"
               href={track.url}
               target="_blank"
               rel="noreferrer"
-              title="Ver en Spotify"
+              aria-label="Escuchar en Spotify"
             >
               <SpotifyIcon />
             </a>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </a>
     </li>
   );
 }

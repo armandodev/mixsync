@@ -1,4 +1,3 @@
-export { default as AppLogo } from "./AppLogo";
-export { default as GithubIcon } from "./GithubIcon";
-export { default as SpotifyIcon } from "./SpotifyIcon";
-export { default as CopyIcon } from "./CopyIcon";
+export { default as Logo } from "./logo";
+export { default as GithubIcon } from "./github";
+export { default as SpotifyIcon } from "./spotify";

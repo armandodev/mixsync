@@ -1,11 +1,10 @@
 "use client";
 
-import { AppLogo } from "@/components/icons";
-import Hamburger from "hamburger-react";
-import { LogIn, User } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { LogIn, User } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Logo } from "@/components/icons";
+import Link from "next/link";
 
 const USER_MENU_LINKS = [
   { name: "Perfil", href: "/profile", active: false },
@@ -38,9 +37,9 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="sticky top-4 z-50 bg-gray-100">
+    <nav>
       <div
-        className="relative flex items-center justify-between max-w-screen-lg bg-white p-4 m-4 xl:mx-auto rounded-lg h-20 shadow-md text-lg"
+        className="relative flex items-center justify-between max-w-screen-lg p-4 mx-auto rounded-none h-20 text-lg"
         role="navigation"
       >
         <a
@@ -51,8 +50,8 @@ export default function Navigation() {
           onClick={handleRouteChange}
           aria-label="Ir a la página de inicio"
         >
-          <AppLogo />
-          <h1 className="sr-only md:not-sr-only">MixSync</h1>
+          <Logo />
+          <h1 className="sr-only sm:not-sr-only">MixSync</h1>
         </a>
 
         <ul className="flex items-center justify-end gap-4">
@@ -110,15 +109,6 @@ export default function Navigation() {
               </ul>
             </li>
           )}
-          <li className="sm:hidden">
-            <Hamburger
-              toggled={openMenu}
-              toggle={toggleMenu}
-              size={24}
-              rounded
-              label="Abrir menú"
-            />
-          </li>
         </ul>
       </div>
     </nav>
