@@ -19,9 +19,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <meta property="og:logo" content={LOGO_URL} />
-      </head>
       <body className={`${onest.variable} antialiased`}>
         <Header />
         <main>{children}</main>
