@@ -4,7 +4,7 @@ const SITE_URL = "https://mixsync.vercel.app";
 const SITE_NAME = "MixSync";
 const DEFAULT_TITLE = "MixSync - Busca y descarga música fácilmente";
 const DEFAULT_DESCRIPTION =
-  "Busca tus canciones favoritas en Spotify y YouTube y obtén nombres de archivo sugerido y URLs para descargarlas en una plataforma.";
+  "Busca tus canciones favoritas en Spotify y obtén nombres de archivo sugerido y URLs para descargarlas en una plataforma.";
 const OG_IMAGE_WEBP = "/og-banner.webp";
 const OG_IMAGE_PNG = "/og-banner.png";
 const OG_IMAGE_SIZES = [

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Result } from "@/types/result";
-import { SpotifyIcon, CopyIcon, YouTubeIcon } from "@/components/icons";
+import { SpotifyIcon, CopyIcon } from "@/components/icons";
 
 const COPY_FEEDBACK_DURATION = 3000;
 const FADE_DURATION = 200;
@@ -87,7 +87,6 @@ export default function Track({ track }: { track: Result }) {
           </button>
         </li>
         <li>
-          {track.origin === "spotify" && (
             <a
               href={track.url}
               target="_blank"
@@ -96,17 +95,6 @@ export default function Track({ track }: { track: Result }) {
             >
               <SpotifyIcon />
             </a>
-          )}
-          {track.origin === "youtube" && (
-            <a
-              href={track.url}
-              target="_blank"
-              rel="noreferrer"
-              title="Ver en YouTube"
-            >
-              <YouTubeIcon />
-            </a>
-          )}
         </li>
       </ul>
     </li>
