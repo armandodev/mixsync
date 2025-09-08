@@ -1,19 +1,26 @@
+"use client";
+
 import { ChangeEvent, FormEvent, useState } from "react";
-import Tracks from "../ui/Tracks";
-import type { Result } from "../../types/result";
-import getSearchResults from "../../utils";
+import { Tracks } from "@/components/ui";
+import type { Result } from "@/types/result";
 
 export default function Searcher() {
   const [query, setQuery] = useState("");
-  const [server, setServer] = useState("all");
   const [results, setResults] = useState<Result[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await getSearchResults(query, server);
-      setResults(res);
+      const res = await fetch(
+        `/api/spotify/search?q=${encodeURIComponent(query)}`
+      );
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Ha ocurrido un error");
+      }
+      const data = await res.json();
+      setResults(data.results);
       setError(null);
     } catch (err: unknown) {
       const message =
@@ -24,10 +31,6 @@ export default function Searcher() {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
-  };
-
-  const handleServerChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setServer(e.target.value);
   };
 
   return (
@@ -44,15 +47,6 @@ export default function Searcher() {
           onChange={handleChange}
           value={query}
         />
-        <select
-          className="rounded-lg border-2 border-gray-300 p-2"
-          value={server}
-          onChange={handleServerChange}
-        >
-          <option value="all">Todos</option>
-          <option value="spotify">Spotify</option>
-          <option value="youtube">YouTube</option>
-        </select>
         <button
           className="rounded-lg bg-blue-500 px-4 py-2 text-white cursor-pointer"
           type="submit"

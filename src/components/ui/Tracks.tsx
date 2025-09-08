@@ -1,5 +1,5 @@
-import type { Result as ResultType } from "../../types/result";
-import Track from "./Track";
+import type { Result as ResultType } from "@/types/result";
+import { Track } from "@/components/ui";
 
 export default function Tracks({
   results,

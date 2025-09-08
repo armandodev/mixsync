@@ -1,4 +1,4 @@
-import { GithubIcon } from "../icons";
+import { GithubIcon } from "@/components/icons";
 
 export default function Footer() {
   return (

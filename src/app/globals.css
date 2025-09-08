@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 html {
-  font-family: "Onest Variable", sans-serif;
+  background-color: #f5f5f5;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
-  @apply bg-gray-50 dark:bg-gray-900 text-black dark:text-white;
 }
 
 select {
-  @apply bg-gray-100 dark:bg-gray-800 text-black dark:text-white;
+  background-color: #f5f5f5;
+  color: #000;
 }
 
 main {

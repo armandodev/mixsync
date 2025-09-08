@@ -1,4 +1,4 @@
-import { AppLogo } from "../icons";
+import { AppLogo } from "@/components/icons";
 
 export default function Header() {
   return (

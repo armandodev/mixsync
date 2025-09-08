@@ -1,12 +1,16 @@
-import type { ErrorResponse, SearchTracksResponse } from "../types/spotify";
-import type { Result } from "../types/result";
+"use server";
+
+import type { ErrorResponse, SearchTracksResponse } from "@/types/spotify";
+import type { Result } from "@/types/result";
 
 let accessTokenCache: { token: string; expiresAt: number } | null = null;
 
 async function fetchAccessToken(): Promise<string> {
-  const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-  if (!clientId || !clientSecret) {
+  const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+  const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+
+  if (!CLIENT_ID || !CLIENT_SECRET) {
+    console.log("Missing Spotify credentials", { CLIENT_ID, CLIENT_SECRET });
     throw new Error(
       "Spotify Client ID y Client Secret no están configurados en las variables de entorno"
     );
@@ -18,8 +22,8 @@ async function fetchAccessToken(): Promise<string> {
     },
     body: new URLSearchParams({
       grant_type: "client_credentials",
-      client_id: import.meta.env.VITE_SPOTIFY_CLIENT_ID as string,
-      client_secret: import.meta.env.VITE_SPOTIFY_CLIENT_SECRET as string,
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
     }),
   });
 

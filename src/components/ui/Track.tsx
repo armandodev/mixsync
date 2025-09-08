@@ -1,6 +1,6 @@
 import { useState } from "react";
-import type { Result } from "../../types/result";
-import { SpotifyIcon, CopyIcon, YouTubeIcon } from "../icons/";
+import type { Result } from "@/types/result";
+import { SpotifyIcon, CopyIcon, YouTubeIcon } from "@/components/icons";
 
 const COPY_FEEDBACK_DURATION = 3000;
 const FADE_DURATION = 200;
