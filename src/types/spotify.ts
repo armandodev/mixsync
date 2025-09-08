@@ -1,5 +1,3 @@
-// src/types/spotify.ts
-
 export interface ExternalUrls {
   spotify: string;
 }

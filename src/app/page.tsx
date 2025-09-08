@@ -1,5 +1,7 @@
-import Searcher from "@/components/ui/Searcher";
-
 export default function Home() {
-  return <Searcher />;
+  return (
+    <section>
+      <h1>Bienvenido a MixSync</h1>
+    </section>
+  );
 }

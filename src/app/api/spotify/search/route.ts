@@ -1,4 +1,4 @@
-import { getSpotifySearchResults } from "@/utils/spotify";
+import { getTracks } from "@/utils/spotify";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     return Response.json({ error: "Falta el parámetro 'q'" }, { status: 400 });
   }
   try {
-    const results = await getSpotifySearchResults(q);
+    const results = await getTracks(q);
     return Response.json({ results });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Error desconocido";

@@ -22,6 +22,7 @@ export default function Searcher() {
       const data = await res.json();
       setResults(data.results);
       setError(null);
+      console.log(data.results);
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "Ha ocurrido un error desconocido";
