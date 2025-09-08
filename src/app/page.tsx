@@ -1,4 +1,4 @@
-import Searcher from "@/components/ui/searcher";
+import { Searcher } from "@/components/ui";
 
 export default function Home() {
   return <Searcher />;
