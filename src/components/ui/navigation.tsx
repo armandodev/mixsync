@@ -7,12 +7,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const NAV_LINKS = [
-  { name: "Inicio", href: "/", active: false },
-  { name: "Buscar", href: "/search", active: false },
-  { name: "Biblioteca", href: "/library", active: false },
-  { name: "Acerca de", href: "/about", active: false },
-];
 const USER_MENU_LINKS = [
   { name: "Perfil", href: "/profile", active: false },
   { name: "Historial", href: "/history", active: false },
@@ -23,11 +17,9 @@ export default function Navigation() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const pathname = usePathname();
-  const isAuthenticated = true; // Cambia esto según el estado de autenticación real
+  // TODO: Implementar autenticación real
+  const isAuthenticated = true;
 
-  NAV_LINKS.forEach((link) => {
-    link.active = link.href === pathname;
-  });
   USER_MENU_LINKS.forEach((link) => {
     link.active = link.href === pathname;
   });
@@ -46,38 +38,24 @@ export default function Navigation() {
   };
 
   return (
-    <nav>
-      <div className="relative flex items-center justify-between max-w-screen-lg bg-white p-4 m-4 xl:mx-auto rounded-lg h-20 shadow-md">
+    <nav className="sticky top-4 z-50 bg-gray-100">
+      <div
+        className="relative flex items-center justify-between max-w-screen-lg bg-white p-4 m-4 xl:mx-auto rounded-lg h-20 shadow-md text-lg"
+        role="navigation"
+      >
         <a
-          className="text-3xl font-bold flex items-center gap-2"
+          className={`text-3xl font-bold flex items-center gap-2 ${
+            pathname === "/" ? "cursor-default" : "cursor-pointer"
+          } transition-opacity duration-200`}
           href="/"
           onClick={handleRouteChange}
+          aria-label="Ir a la página de inicio"
         >
           <AppLogo />
-          <h1 className="sr-only sm:not-sr-only">MixSync</h1>
+          <h1 className="sr-only md:not-sr-only">MixSync</h1>
         </a>
 
-        <ul
-          className={`bg-white w-full absolute top-24 left-0 flex items-center gap-4 rounded-md shadow-md p-4 transition-transform duration-200 sm:static sm:flex-row sm:shadow-none sm:p-0 sm:gap-6 sm:w-auto sm:scale-100 origin-top-right sm:origin-center z-10 sm:z-auto flex-col ${
-            openMenu ? "scale-100" : "scale-0"
-          }`}
-        >
-          {NAV_LINKS.map((link) => (
-            <li key={link.name}>
-              <Link
-                className={`transition-opacity duration-200 ${
-                  link.active ? "opacity-100" : "opacity-60 hover:opacity-100"
-                }`}
-                href={link.href}
-                onClick={handleRouteChange}
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <ul className="flex items-center gap-4">
+        <ul className="flex items-center justify-end gap-4">
           {!isAuthenticated && (
             <li>
               <Link
@@ -117,6 +95,13 @@ export default function Navigation() {
                       }`}
                       href={link.href}
                       onClick={handleRouteChange}
+                      aria-current={link.active ? "page" : undefined}
+                      tabIndex={link.active ? -1 : 0}
+                      aria-label={
+                        link.active
+                          ? `${link.name}, página actual`
+                          : `Ir a ${link.name}`
+                      }
                     >
                       {link.name}
                     </Link>

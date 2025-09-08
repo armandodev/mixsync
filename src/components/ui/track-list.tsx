@@ -1,13 +1,16 @@
-import type { Result as ResultType } from "@/types/result";
+import type { Result } from "@/types/result";
 import { Track } from "@/components/ui";
 
-export default function Tracks({
+export default function TrackList({
   results,
   error,
 }: {
-  results: ResultType[];
+  results: Result[];
   error: string | null;
 }) {
+  if (!results) {
+    console.log("Error cargando los resultados", error);
+  }
   return (
     <ul className="flex flex-wrap gap-4">
       {error && (

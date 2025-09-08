@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Tracks } from "@/components/ui";
+import { TrackList } from "@/components/ui";
 import type { Result } from "@/types/result";
 import { getTracks } from "@/utils/spotify";
 
@@ -49,7 +49,7 @@ export default function Searcher() {
           Buscar
         </button>
       </form>
-      <Tracks results={results} error={error} />
+      <TrackList results={results} error={error} />
     </section>
   );
 }
