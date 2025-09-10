@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { TrackList } from "@/components/ui";
 import type { Result } from "@/types/result";
 import { getTracks } from "@/utils/spotify";
+import { Search } from "lucide-react";
 
 export default function Searcher() {
   const [query, setQuery] = useState("");
@@ -28,24 +29,27 @@ export default function Searcher() {
   };
 
   return (
-    <section className="grid gap-4 w-full p-4 mx-4">
-      <h2 className="text-3xl">Busca tus canciones favoritas</h2>
+    <section className="grid gap-4 w-full mx-4">
+      <h2 className="text-3xl text-center">Busca tus canciones favoritas</h2>
       <form
-        className="grid grid-cols-2 sm:flex items-center justify-center gap-2"
+        className="flex items-center justify-center"
         onSubmit={handleSubmit}
       >
         <input
-          className="w-full col-span-2 rounded-lg border-2 border-gray-300 p-2"
+          className="w-full col-span-2 rounded-l-lg border-2 border-r-0 border-gray-300 p-2"
+          id="search"
+          name="search"
           type="text"
           placeholder="Título, artista, etc."
           onChange={handleChange}
           value={query}
         />
         <button
-          className="rounded-lg bg-blue-500 px-4 py-2 text-white cursor-pointer"
+          className="flex items-center gap-2 rounded-r-lg border-4 sm:border-2 border-blue-500 bg-blue-500 px-4 py-2 text-white cursor-pointer"
           type="submit"
         >
-          Buscar
+          <Search className="w-5 h-5" />
+          <span className="sr-only sm:not-sr-only">Buscar</span>
         </button>
       </form>
       <TrackList results={results} error={error} />

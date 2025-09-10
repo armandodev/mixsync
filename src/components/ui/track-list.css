@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+#track-list {
+  @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full align-baseline;
+}
+
+/* Ancho adicional para los móviles más pequeños */
+@media (max-width: 350px) {
+  #track-list {
+    @apply grid-cols-1;
+  }
+}

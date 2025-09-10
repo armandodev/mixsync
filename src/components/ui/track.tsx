@@ -30,18 +30,17 @@ export default function Track({
   ];
 
   return (
-    <li className="grid gap-4 justify-between p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-200 w-full">
+    <li className="grid gap-4 justify-between place-content-center p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-200 w-full">
       <Link
-        className="grid gap-2 hover:scale-105 transition-transform duration-200"
+        className="grid gap-4 hover:scale-105 transition-transform duration-200"
         href={`/track/${track.id}`}
       >
         <Image
-          className="w-full aspect-square object-center object-cover rounded-lg mb-2 shadow-md"
-          width={150}
-          height={150}
+          className="aspect-square object-center object-cover rounded-lg shadow-md"
+          width={300}
+          height={300}
           src={track.image || "/default.png"}
           alt={track.title || "Imagen de la canción"}
-          loading="lazy"
         />
         <div role="text">
           <h3 className="text-sm sm:text-normal md:text-lg font-semibold">

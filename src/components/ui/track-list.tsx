@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Result } from "@/types/result";
 import { Track } from "@/components/ui";
 import { X } from "lucide-react";
+import "./track-list.css";
 
 const DIALOG_TIMEOUT = 5000;
 
@@ -40,7 +41,7 @@ export default function TrackList({
     handleMessage("Descarga iniciada");
   };
   return (
-    <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full align-baseline">
+    <ul id="track-list">
       <div
         role="alert"
         className={`fixed w-full inset-x-0 bottom-4 rounded-lg px-4 z-50 opacity-0 scale-0 transition-all duration-500 ${
